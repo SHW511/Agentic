@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:developers.openai.com)",
+      "WebFetch(domain:html.duckduckgo.com)",
+      "Bash(dotnet add:*)",
+      "WebFetch(domain:lite.duckduckgo.com)",
+      "Bash(dotnet build:*)"
+    ]
+  }
+}
