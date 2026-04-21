@@ -10,7 +10,7 @@ internal class Program
     {
         // --- Configuration ---
         const string lmStudioEndpoint = "http://192.168.178.59:1234/v1";
-        const string modelName = "openai/gpt-oss-20b"; // Leave empty — LM Studio uses whatever model is loaded
+        const string modelName = "deepseek/deepseek-r1-0528-qwen3-8b"; // Leave empty — LM Studio uses whatever model is loaded
 
         // --- LLM Client ---
         var client = new OpenAIClient(

@@ -7,7 +7,7 @@ namespace Agentic.Tools;
 public class RunCommandTool : ITool
 {
     public string Name => "run_command";
-    public string Description => "Execute a shell command (PowerShell on Windows) and return its stdout and stderr.";
+    public string Description => "Execute a terminal command and return its stdout and stderr.";
 
     public BinaryData ParameterSchema => BinaryData.FromString("""
     {
@@ -15,7 +15,7 @@ public class RunCommandTool : ITool
         "properties": {
             "command": {
                 "type": "string",
-                "description": "The shell command to execute."
+                "description": "The terminal command to execute."
             },
             "working_directory": {
                 "type": "string",
