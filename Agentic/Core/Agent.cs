@@ -41,14 +41,17 @@ public class Agent
         _history.Add(ChatMessage.CreateUserMessage(userMessage));
 
         var options = new ChatCompletionOptions();
-        foreach (var tool in _tools.ToChatTools())
-            options.Tools.Add(tool);
-
         if (ReasoningEffort is not null)
             options.ReasoningEffortLevel = ReasoningEffort;
 
         for (int i = 0; i < _maxIterations; i++)
         {
+            // Rebuild each iteration so tools registered mid-conversation (e.g. by request_new_tool)
+            // become callable on the very next LLM turn.
+            options.Tools.Clear();
+            foreach (var tool in _tools.ToChatTools())
+                options.Tools.Add(tool);
+
             ChatCompletion completion = await _chatClient.CompleteChatAsync(_history, options, ct);
 
             if (completion.FinishReason == ChatFinishReason.ToolCalls)
